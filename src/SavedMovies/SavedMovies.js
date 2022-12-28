@@ -7,7 +7,7 @@ import theme from "../../src/theme";
 
 
 const MovieItem = (props) => {
-  const movie = props.movie;
+  const {movie} = props;
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   return (

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { popularMovies } from "../shared/API";
+import { getPopularMovies } from "../shared/API";
 import { Grid, Typography } from "@mui/material";
 import styles from "./PopularMovies.module.css";
 import theme from "../theme";
@@ -8,7 +8,7 @@ const PopularMovies = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        popularMovies().then((res) => {
+        getPopularMovies().then((res) => {
             setMovies(res.data.results);
         });
     }, []);

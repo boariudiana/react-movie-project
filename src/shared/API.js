@@ -8,7 +8,7 @@ export const searchMovies = (query) => {
   return axios.get(URL)
 }
 
-export const popularMovies = () => {
+export const getPopularMovies = () => {
   const apiKey = REACT_APP_API_KEY;
   const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
   return axios.get(URL)
