@@ -1,0 +1,12 @@
+.ul{
+    list-style: none;
+}
+
+.links {
+    display: inline-block;
+    padding-left: 20px;
+}
+.links a{
+    text-decoration: none;
+    color:#BAC4E3
+}

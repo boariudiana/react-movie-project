@@ -1,0 +1,11 @@
+.star {
+    color: grey;
+  }
+  
+  .active,
+  .star:hover {
+    color: orange;
+  }
+  .raited{
+    color: orange;
+  }

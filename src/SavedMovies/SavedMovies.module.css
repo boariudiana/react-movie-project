@@ -1,0 +1,19 @@
+.movie_item{
+    list-style: none;
+    margin: 16px;
+    min-width: 345px;
+
+}
+.container{
+    list-style: none;
+}
+
+.media{
+    height: 140px;
+}
+
+@media (max-width: 600px){
+    .movie_item{
+        margin: 16px 0;
+    }
+}
