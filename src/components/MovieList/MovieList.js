@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import styles from "./MovieList.module.css";
 
 const MovieList = (props) => {
- 
+ console.log('savedmovie', props.savedMovies);
   return (
     <div className={styles.box}>
       <ul className={styles.list}>

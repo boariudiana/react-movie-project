@@ -1,16 +1,22 @@
 import React, { useEffect, useState , useRef, useCallback} from "react";
-import { searchMovies } from "../shared/API";
+import { searchMovies } from "../../shared/API";
 import styles from "./SearchBox.module.css";
 import MovieList from "../MovieList/MovieList";
 import { TextField } from "@mui/material";
-import { useDebounce } from "../utils/customHooks";
+import { useDebounce } from "../../utils/customHooks";
+import { useDispatch, useSelector } from "react-redux";
+import { movieActions } from "../../store/movieSlice";
 
 
-const SearchBox = ({onMovieAdd, savedMovies }) => {
-
+const SearchBox = () => {
+  
   const [term, setTerm] = useState("");
   const searchedTerm = useDebounce(term, 500);
   const [movies, setMovies] = useState([]);
+
+  const savedMovies = useSelector(state => state.movie.movies)
+
+  const dispatch = useDispatch()
 
   const inputRef = useRef(null)
   
@@ -28,8 +34,8 @@ const SearchBox = ({onMovieAdd, savedMovies }) => {
 
   const localMovieAdd = useCallback((movie) => {
     setMovies([]);
-    onMovieAdd(movie);
-  }, [onMovieAdd]);
+    dispatch(movieActions.addMovie(movie));
+  }, [dispatch]);
 
   return (
     <div >

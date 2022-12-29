@@ -3,7 +3,9 @@ import {Card, CardActionArea, CardHeader, CardActions, Avatar, CardMedia, Typogr
 import styles from "./SavedMovies.module.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import MovieRaiting from "../MovieRaiting/MovieRaiting";
-import theme from "../../src/theme";
+import theme from "../../theme";
+import { useDispatch, useSelector } from "react-redux";
+import { movieActions } from "../../store/movieSlice";
 
 
 const MovieItem = (props) => {
@@ -49,12 +51,26 @@ const MovieItem = (props) => {
   );
 };
 
-const SavedMovies = (props) => {
+const SavedMovies = () => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const savedMovies = useSelector(state => state.movie.movies)
 
+  const dispatch = useDispatch();
+
+  // const sortedByIdMovies = useMemo(() => {
+  //   if (savedMovies && Array.isArray(savedMovies)){
+  //     return savedMovies.sort((a, b) => a.id - b.id)
+  //   }
+  //   return savedMovies
+  // }, [savedMovies])
+
+  const onMovieDelete = (id) => {
+    dispatch(movieActions.deleteMovie(id));
+  }
+  console.log('saved', savedMovies)
   return (
     <div className={styles.movie_container}>
-      {props.savedMovies && props.savedMovies.length > 0 ? (
+      {savedMovies && savedMovies.length > 0 ? (
         <ul className={styles.container}>
           <Grid
             container
@@ -63,11 +79,11 @@ const SavedMovies = (props) => {
             justify="center"
             alignItems="center"
           >
-            {props.savedMovies.map((movie) => (
+            {savedMovies.map((movie) => (
               <MovieItem
                 movie={movie}
                 key={movie.id}
-                onMovieDelete={props.onMovieDelete}
+                onMovieDelete={() => onMovieDelete(movie.id)}
               />
             ))}
           </Grid>

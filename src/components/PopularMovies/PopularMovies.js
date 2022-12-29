@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from "react";
-import { getPopularMovies } from "../shared/API";
+import { getPopularMovies } from "../../shared/API";
 import { Grid, Typography } from "@mui/material";
 import styles from "./PopularMovies.module.css";
-import theme from "../theme";
+import theme from "../../theme";
 
 const PopularMovies = () => {
     const [movies, setMovies] = useState([]);
@@ -15,7 +15,7 @@ const PopularMovies = () => {
 
     return (
         <div className={styles.layout}>
-            <Typography variant="h6" color="primary" align="center" style={{padding: '20px'}}>
+            <Typography variant="h6" color="primary" align="center" sx={{padding: '20px', color: 'black'}}>
                 Most popular movies
             </Typography>
             <div sx= {{
