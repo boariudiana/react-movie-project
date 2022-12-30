@@ -2,7 +2,7 @@ import React, { useEffect, useState , useRef, useCallback} from "react";
 import { searchMovies } from "../../shared/API";
 import styles from "./SearchBox.module.css";
 import MovieList from "../MovieList/MovieList";
-import { TextField } from "@mui/material";
+import { TextField, Snackbar, Alert } from "@mui/material";
 import { useDebounce } from "../../utils/customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { movieActions } from "../../store/movieSlice";
@@ -15,6 +15,7 @@ const SearchBox = () => {
   const [movies, setMovies] = useState([]);
 
   const savedMovies = useSelector(state => state.movie.movies)
+  const openModal = useSelector((state) => state.movie.isOpenModal);
 
   const dispatch = useDispatch()
 
@@ -33,27 +34,49 @@ const SearchBox = () => {
   }, [searchedTerm])
 
   const localMovieAdd = useCallback((movie) => {
-    setMovies([]);
     dispatch(movieActions.addMovie(movie));
   }, [dispatch]);
 
+  const handleClose = useCallback(
+    (event, reason) => {
+      if (reason === "clickaway") {
+        return;
+      }
+
+      dispatch(movieActions.handdleModalClose());
+    },
+    [dispatch]
+  );
+
+  console.log(searchedTerm)
+
   return (
     <div >
+      <Snackbar
+          open={openModal}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Alert onClose={handleClose} severity="success">
+            Movie added in My List!
+          </Alert>
+        </Snackbar>
       <div>
-        <div>
-          <TextField
-            id="filled-search"
-            label="Search for a movie..."
-            type="search"
-            variant="filled"
-            className={styles.search}
-            inputRef={inputRef}
-            onChange={(e) => {
-              setTerm(e.target.value);
-            }}
-
-          />
-        </div>
+        <TextField
+          id="filled-search"
+          label="Search for a movie..."
+          type="search"
+          variant="filled"
+          className={styles.search}
+          inputRef={inputRef}
+          onChange={(e) => {
+            setTerm(e.target.value);
+          }}
+        />
       </div>
       <MovieList 
               movies={movies} 

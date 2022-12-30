@@ -1,12 +1,32 @@
-.ul{
-    list-style: none;
-}
 
-.links {
-    display: inline-block;
-    padding-left: 20px;
-}
-.links a{
+  .header nav {
+    height: 100%;
+  }
+  
+  .header ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header li {
+    margin: 0 1rem;
+    width: 5rem;
+  }
+  
+  .header a {
+    color: white;
     text-decoration: none;
-    color:#BAC4E3
-}
+  }
+  
+  .header a:hover,
+  .header a:active,
+  .header a.active {
+    color: #95bcf0;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #95bcf0;
+  }
