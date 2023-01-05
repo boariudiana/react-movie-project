@@ -1,17 +1,14 @@
 import React from 'react';
 import { Switch , Route, Redirect} from 'react-router-dom';
-import './App.css';
-import Header from './shared/Header/Header';
-import SearchBox from './components/Search/SearchBox';
-import SavedMovies from './components/SavedMovies/SavedMovies';
-import PopularMovies from './components/PopularMovies/PopularMovies';
+import SearchBox from './pages/Search/SearchBox';
+import SavedMovies from './pages/SavedMovies/SavedMovies';
+import PopularMovies from './pages/PopularMovies/PopularMovies';
+import Layout from './components/Layout';
 
 const App = () => {
     return (
-      <div className="App">
-        <Header />
-        <main>
-          <Switch>
+      <Layout>
+        <Switch>
             <Route path='/' exact>
               <Redirect to='/home'/>
             </Route>
@@ -25,8 +22,7 @@ const App = () => {
               <PopularMovies />
             </Route>
           </Switch>
-        </main>
-      </div>
+      </Layout>
     );
 }
 

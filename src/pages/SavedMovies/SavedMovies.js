@@ -2,7 +2,7 @@ import React from "react";
 import {Card, CardActionArea, CardHeader, CardActions, Avatar, CardMedia, Typography, useMediaQuery, Button, Grid} from "@mui/material";
 import styles from "./SavedMovies.module.css";
 import DeleteIcon from '@mui/icons-material/Delete';
-import MovieRaiting from "../MovieRaiting/MovieRaiting";
+import MovieRaiting from "../../components/MovieRaiting/MovieRaiting";
 import theme from "../../theme";
 import { useDispatch, useSelector } from "react-redux";
 import { movieActions } from "../../store/movieSlice";

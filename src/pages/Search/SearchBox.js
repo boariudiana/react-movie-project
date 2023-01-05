@@ -1,7 +1,7 @@
 import React, { useEffect, useState , useRef, useCallback} from "react";
 import { searchMovies } from "../../shared/API";
 import styles from "./SearchBox.module.css";
-import MovieList from "../MovieList/MovieList";
+import MovieList from "../../components/MovieList/MovieList";
 import { TextField, Snackbar, Alert } from "@mui/material";
 import { useDebounce } from "../../utils/customHooks";
 import { useDispatch, useSelector } from "react-redux";
